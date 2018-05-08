@@ -1,6 +1,4 @@
 package com.cmpe273.resource;
-
-import com.cmpe273.model.ProjectBid;
 import com.cmpe273.repository.UserRepository;
 import com.cmpe273.repository.Skillrepository;
 import com.cmpe273.model.User;
