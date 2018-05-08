@@ -7,7 +7,6 @@ import com.cmpe273.repository.ProjectRepository;
 import com.cmpe273.model.ProjectBid;
 import com.cmpe273.model.Skill;
 import com.cmpe273.model.Project;
-//import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
