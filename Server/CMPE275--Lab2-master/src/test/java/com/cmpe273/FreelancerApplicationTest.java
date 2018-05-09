@@ -12,7 +12,7 @@ import com.cmpe273.model.User;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SpringBootMysqldbApplicationTests {
+public class FreelancerApplicationTest {
 
 	public static RestTemplate restTemplateObj;
 

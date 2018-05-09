@@ -13,6 +13,9 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.math.BigInteger;
 
 @Controller
 @CrossOrigin(origins = "http://localhost:3000")
@@ -26,7 +29,18 @@ public class UserController {
     private Skillrepository skillrepository;
 
     @PostMapping(path="/login",consumes = MediaType.APPLICATION_JSON_VALUE) // Map ONLY POST Requests
-    public ResponseEntity<?> login (@RequestBody User user) {
+    public ResponseEntity<?> login (@RequestBody User user)  throws NoSuchAlgorithmException  {
+
+        MessageDigest messageDigest =null;
+        try {
+            messageDigest = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+        messageDigest.update(user.getPassword().getBytes(),0,user.getPassword().length());
+        String md5String = new BigInteger(1,messageDigest.digest()).toString(16);
+        user.setPassword(md5String);
 
         List<User> us = userRepository.findByEmailAndPassword(user.getEmail(),user.getPassword());
         if(us.isEmpty()){
@@ -48,7 +62,12 @@ public class UserController {
 
 
     @PostMapping(path="/signup",consumes = MediaType.APPLICATION_JSON_VALUE) // Map ONLY POST Requests
-    public ResponseEntity<?> addNewUser (@RequestBody User user) {
+    public ResponseEntity<?> addNewUser (@RequestBody User user) throws NoSuchAlgorithmException  {
+
+        MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+        messageDigest.update(user.getPassword().getBytes(),0,user.getPassword().length());
+        String md5String = new BigInteger(1,messageDigest.digest()).toString(16);
+        user.setPassword(md5String);
         System.out.println("Signup");
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
