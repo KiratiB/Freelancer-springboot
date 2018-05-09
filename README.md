@@ -1,12 +1,12 @@
 # Freelancer-springboot
 
-###Steps to start Dropbox Application-
+Steps to start Dropbox Application:
 
-React-
+React
 
 npm install
 npm start
 
-###Steps to start SpringBootApplication
+Steps to start SpringBootApplication:
 
 run SpringBootMysqldbApplication.main() method
