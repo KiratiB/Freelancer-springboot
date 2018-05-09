@@ -1,11 +1,12 @@
 # Freelancer-springboot
 
-##Steps to start Dropbox Application-
+###Steps to start Dropbox Application-
 
 React-
 
-npm install npm start
+npm install
+npm start
 
-Steps to start SpringBootApplication
+###Steps to start SpringBootApplication
 
-run SpringBootDemo.main() method
+run SpringBootMysqldbApplication.main() method
